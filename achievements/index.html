@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Achievements Timeline</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#f4f4f4;
+      padding:80px 30px;
+    }
+
+    .achievement-section{
+      max-width:1500px;
+      margin:auto;
+      text-align:center;
+    }
+
+    .sub-title{
+      color:#f4a000;
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:1px;
+      margin-bottom:15px;
+    }
+
+    .main-title{
+      font-size:54px;
+      color:#0b2b68;
+      font-weight:800;
+      margin-bottom:100px;
+    }
+
+    .timeline{
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      gap:45px;
+      flex-wrap:wrap;
+      position:relative;
+    }
+
+    /* LINE */
+    .timeline::before{
+      content:"";
+      position:absolute;
+      top:50%;
+      left:5%;
+      width:90%;
+      height:3px;
+      background:#d8d8d8;
+      z-index:0;
+    }
+
+    .achievement-card{
+      position:relative;
+      width:260px;
+      z-index:2;
+      cursor:pointer;
+    }
+
+    /* BIG CIRCLE */
+    .main-circle{
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:#ececec;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      padding:35px;
+      transition:0.4s ease;
+      overflow:hidden;
+    }
+
+    .main-circle h3{
+      color:#0b2b68;
+      font-size:20px;
+      line-height:1.4;
+      margin-bottom:18px;
+      font-weight:800;
+    }
+
+    .main-circle p{
+      color:#222;
+      font-size:17px;
+      line-height:1.8;
+    }
+
+    /* SMALL YEAR CIRCLE */
+    .year-circle{
+      position:absolute;
+      top:-25px;
+      right:20px;
+      width:110px;
+      height:110px;
+      border-radius:50%;
+      background:#142a73;
+      border:4px dashed #4f65b7;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      color:#fff;
+      z-index:5;
+      transition:0.4s ease;
+    }
+
+    .year-circle span{
+      font-size:28px;
+      font-weight:800;
+    }
+
+    .year-circle small{
+      font-size:18px;
+      font-weight:700;
+      margin-top:5px;
+    }
+
+    /* ACTIVE CARD */
+    .achievement-card.active .main-circle{
+      background:#f4a000;
+      transform:scale(1.03);
+    }
+
+    .achievement-card.active .year-circle{
+      background:#0b2b68;
+      transform:scale(1.08);
+    }
+
+    /* HOVER EFFECT */
+    .achievement-card:hover .main-circle{
+      transform:translateY(-8px);
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1400px){
+
+      .timeline{
+        gap:70px;
+      }
+
+      .timeline::before{
+        display:none;
+      }
+    }
+
+    @media(max-width:768px){
+
+      .main-title{
+        font-size:38px;
+      }
+
+      .achievement-card{
+        width:100%;
+        display:flex;
+        justify-content:center;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<section class="achievement-section">
+
+  <div class="sub-title">
+    OUR ACHIEVEMENTS
+  </div>
+
+  <h1 class="main-title">
+    Milestones & Achievements
+  </h1>
+  <p>Since our founding, Jadeed Communications has built a track record of landmark 
+engagements, strategic growth, and measurable impact: </p>
+
+  <div class="timeline">
+
+    <!-- 2014 -->
+    <div class="achievement-card active">
+
+      <div class="year-circle">
+        <span>2014</span>
+        <small>Year</small>
+      </div>
+
+      <div class="main-circle">
+        <h3>Company Founded</h3>
+
+        <p>
+          Founded with a mandate to bridge communication gaps across underserved markets in Africa and the Middle East.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- 2016 -->
+    <div class="achievement-card">
+
+      <div class="year-circle">
+        <span>2016</span>
+        <small>Year</small>
+      </div>
+
+      <div class="main-circle">
+        <h3>East Africa Office</h3>
+
+        <p>
+          Established East Africa office, anchoring a growing portfolio of health communications and humanitarian mandates.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- 2018 -->
+    <div class="achievement-card">
+
+      <div class="year-circle">
+        <span>2018</span>
+        <small>Year</small>
+      </div>
+
+      <div class="main-circle">
+        <h3>North Africa Expansion</h3>
+
+        <p>
+          Expanded into North Africa, onboarding the first UN agency partnership and multilingual campaign capabilities.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- 2020 -->
+    <div class="achievement-card">
+
+      <div class="year-circle">
+        <span>2020</span>
+        <small>Year</small>
+      </div>
+
+      <div class="main-circle">
+        <h3>COVID-19 Campaigns</h3>
+
+        <p>
+          Delivered critical COVID-19 public awareness campaigns with government ministries and international health bodies.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- 2022 -->
+    <div class="achievement-card">
+
+      <div class="year-circle">
+        <span>2022</span>
+        <small>Year</small>
+      </div>
+
+      <div class="main-circle">
+        <h3>Southern Africa Office</h3>
+
+        <p>
+          Opened Southern Africa office, extending digital strategy services to development finance and energy sectors.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- 2024 -->
+    <div class="achievement-card">
+
+      <div class="year-circle">
+        <span>2024</span>
+        <small>Year</small>
+      </div>
+
+      <div class="main-circle">
+        <h3>10 Years of Impact</h3>
+
+        <p>
+          Celebrated a decade of impact with a portfolio spanning 4 regions serving governments and development partners.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<script>
+
+  const cards = document.querySelectorAll(".achievement-card");
+
+  cards.forEach((card) => {
+
+    card.addEventListener("click", () => {
+
+      // Remove active from all cards
+      cards.forEach((item) => {
+        item.classList.remove("active");
+      });
+
+      // Add active to clicked card
+      card.classList.add("active");
+
+    });
+
+  });
+
+</script>
+
+
+</body>
+</html>

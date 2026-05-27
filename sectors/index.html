@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio – Moto Communications</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --blue: #283a82;
+        --black: #000000;
+        --gold: #f4c400;
+        --light-bg: #f5f5f5;
+        --white: #ffffff;
+        --text: #222222;
+      }
+
+      html, body { overflow-x: hidden; font-family: 'Open Sans', sans-serif; color: var(--text); background: var(--white); }
+
+      a { text-decoration: none; color: inherit; }
+
+      /* ─── TOPBAR ─── */
+      #header_topbar {
+        background: var(--blue);
+        color: #fff;
+        padding: 10px 0;
+        font-size: 13px;
+      }
+      #header_topbar .container { max-width: 1200px; margin: auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+      .info-list { list-style: none; display: flex; gap: 20px; }
+      .info-list li { display: flex; align-items: center; gap: 6px; color: #fff; }
+      .info-list li a { color: #fff; }
+      .social-list { list-style: none; display: flex; gap: 12px; }
+      .social-list li a { color: #fff; font-size: 14px; transition: color .2s; }
+      .social-list li a:hover { color: var(--gold); }
+
+      /* ─── MAIN HEADER ─── */
+      .main-header {
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0,0,0,.08);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .main-header .container { max-width: 1200px; margin: auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 80px; }
+      #site-logo img { height: 60px; width: auto; }
+
+      /* ─── NAV ─── */
+      .main-navigation ul { list-style: none; display: flex; gap: 4px; align-items: center; }
+      .main-navigation ul li { position: relative; }
+      .main-navigation ul li a {
+        display: block;
+        padding: 8px 14px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: .5px;
+        color: var(--text);
+        transition: color .2s;
+        white-space: nowrap;
+      }
+      .main-navigation ul li a:hover,
+      .main-navigation ul li.current-menu-item > a { color: var(--blue); }
+      .main-navigation ul li.current-menu-item > a { border-bottom: 2px solid var(--blue); }
+
+      /* Dropdown */
+      .main-navigation ul li ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        min-width: 180px;
+        box-shadow: 0 8px 20px rgba(0,0,0,.1);
+        border-top: 3px solid var(--blue);
+        flex-direction: column;
+        gap: 0;
+        z-index: 200;
+      }
+      .main-navigation ul li:hover > ul { display: flex; }
+      .main-navigation ul li ul li a { padding: 10px 18px; font-size: 13px; color: var(--text); }
+      .main-navigation ul li ul li a:hover { background: var(--blue); color: #fff; }
+
+      /* ─── MOBILE HEADER ─── */
+      .header_mobile { display: none; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+      .mlogo_wrapper { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; }
+      .mobile_logo img { height: 50px; width: auto; }
+      #mmenu_toggle button {
+        background: none; border: none; cursor: pointer;
+        width: 30px; height: 22px; position: relative;
+        display: flex; flex-direction: column; justify-content: space-between;
+      }
+      #mmenu_toggle button::before,
+      #mmenu_toggle button::after,
+      #mmenu_toggle button span {
+        content: '';
+        display: block;
+        height: 3px;
+        background: var(--blue);
+        border-radius: 2px;
+        transition: .3s;
+      }
+      .mmenu_wrapper { display: none; background: #fff; border-top: 1px solid #eee; }
+      .mmenu_wrapper.open { display: block; }
+      .mobile_mainmenu { list-style: none; padding: 10px 0; }
+      .mobile_mainmenu li a { display: block; padding: 12px 20px; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; color: var(--text); border-bottom: 1px solid #f0f0f0; }
+      .mobile_mainmenu li a:hover { color: var(--blue); background: #f8f9ff; }
+      .mobile_mainmenu .sub-menu { list-style: none; background: #f8f9ff; }
+      .mobile_mainmenu .sub-menu li a { padding-left: 36px; font-size: 13px; font-weight: 400; }
+
+      /* ─── PAGE HEADER / BANNER ─── */
+      .page-header {
+        background: linear-gradient(135deg, #0b3d91 0%, #1565c0 40%, #00acc1 100%);
+        position: relative;
+        overflow: hidden;
+        min-height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .page-header::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80') center/cover no-repeat;
+        opacity: .25;
+      }
+      .page-header h1 {
+        position: relative;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 42px;
+        font-weight: 800;
+        color: #fff;
+        text-align: center;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      /* ─── SECTOR SECTION ─── */
+      .sector-section {
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 30px;
+      }
+      .section-title {
+        color: var(--blue);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        letter-spacing: 7px;
+        font-weight: 700;
+        margin-bottom: 18px;
+        text-transform: uppercase;
+        position: relative;
+        display: inline-block;
+      }
+      .section-title::after {
+        content: '';
+        position: absolute;
+        left: 0; bottom: -10px;
+        width: 100%; height: 3px;
+        background: var(--gold);
+      }
+      .section-subtitle {
+        font-size: 20px;
+        line-height: 1.7;
+        margin: 28px 0 50px;
+        color: #333;
+        max-width: 700px;
+      }
+      .sector-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+      }
+      .sector-card {
+        background: #fff;
+        border: 2px solid var(--blue);
+        border-radius: 18px;
+        overflow: hidden;
+        transition: .4s ease;
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 8px 20px rgba(0,0,0,.08);
+      }
+      .sector-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 0%;
+        background: var(--gold);
+        transition: .4s ease;
+        z-index: 0;
+      }
+      .sector-card:hover::before { height: 100%; }
+      .sector-card:hover { transform: translateY(-10px) scale(1.02); border-color: #000; box-shadow: 0 15px 35px rgba(0,0,0,.2); }
+      .sector-header {
+        background: var(--blue);
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+        transition: .4s ease;
+      }
+      .sector-card:hover .sector-header { background: #000; color: var(--gold); }
+      .sector-content { padding: 30px; position: relative; z-index: 1; }
+      .sector-content ul { padding-left: 22px; }
+      .sector-content li {
+        margin-bottom: 18px;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #222;
+        transition: .3s ease;
+      }
+      .sector-card:hover .sector-content li { color: #000; transform: translateX(6px); }
+
+      /* ─── FOOTER ─── */
+      .site-footer { background: var(--blue); color: #fff; }
+      .main-footer { padding: 60px 0 30px; }
+      .main-footer .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+      .main-footer .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; }
+      .widget-title { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,.15); }
+      .widget-inner p, .textwidget p { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,.8); margin-bottom: 10px; }
+      .widget-inner img { max-width: 160px; height: auto; margin-bottom: 14px; filter: brightness(0) invert(1); }
+      .footer-nav-list { list-style: none; }
+      .footer-nav-list li { margin-bottom: 10px; }
+      .footer-nav-list li a { font-size: 14px; color: rgba(255,255,255,.8); transition: .2s; display: flex; align-items: center; gap: 6px; }
+      .footer-nav-list li a::before { content: '›'; color: var(--gold); font-size: 18px; }
+      .footer-nav-list li a:hover { color: #fff; padding-left: 4px; }
+      .footer-address p { font-size: 14px; color: rgba(255,255,255,.8); line-height: 1.8; }
+      .footer-address strong { color: #fff; }
+      .footer-social { display: flex; gap: 10px; margin-top: 16px; }
+      .footer-social a {
+        width: 36px; height: 36px;
+        background: rgba(255,255,255,.1);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: #fff;
+        font-size: 14px;
+        transition: .2s;
+      }
+      .footer-social a:hover { background: var(--gold); color: #000; }
+
+      .footer-bottom { background: #000; padding: 16px 0; }
+      .footer-bottom .container { max-width: 1200px; margin: auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+      .footer-copyright { font-size: 13px; color: rgba(255,255,255,.7); }
+      .footer-bottom-links { display: flex; gap: 20px; list-style: none; }
+      .footer-bottom-links a { font-size: 13px; color: rgba(255,255,255,.7); transition: .2s; }
+      .footer-bottom-links a:hover { color: var(--gold); }
+
+      /* ─── BACK TO TOP ─── */
+      #back-to-top {
+        position: fixed; bottom: 30px; right: 30px;
+        width: 44px; height: 44px;
+        background: var(--blue);
+        color: #fff;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 18px;
+        box-shadow: 0 4px 12px rgba(0,0,0,.2);
+        transition: .2s;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+      }
+      #back-to-top.show { opacity: 1; pointer-events: all; }
+      #back-to-top:hover { background: var(--gold); color: #000; transform: translateY(-3px); }
+
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 991px) {
+        .main-header, #header_topbar { display: none; }
+        .header_mobile { display: block; }
+      }
+      @media (max-width: 768px) {
+        .page-header { min-height: 160px; }
+        .page-header h1 { font-size: 28px; }
+        .sector-section { padding: 0 16px; margin: 40px auto; }
+        .section-subtitle { font-size: 16px; }
+        .footer-bottom .container { flex-direction: column; text-align: center; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="page" class="site">
+
+      <!-- ─── TOPBAR ─── -->
+      <div id="header_topbar">
+        <div class="container">
+          <ul class="info-list">
+            <li><i class="fa fa-map-marker-alt"></i> Waiyaki Way, Nairobi, Kenya</li>
+            <li><i class="fa fa-phone"></i> <a href="tel:+254722351155">+254 722 351155</a></li>
+          </ul>
+          <ul class="social-list">
+            <li><a href="https://www.facebook.com/impactsomalia/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+            <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ─── DESKTOP HEADER ─── -->
+      <header id="site-header" class="main-header">
+        <div class="container">
+          <div id="site-logo">
+            <a href="../index.html">
+              <img src="../contents/motocom-logo.jpg" alt="Moto Communications" />
+            </a>
+          </div>
+          <nav id="site-navigation" class="main-navigation">
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li class="menu-item-has-children">
+                <a href="#">About</a>
+                <ul class="sub-menu">
+                  <li><a href="../about-us/index.html">About Us</a></li>
+                </ul>
+              </li>
+
+              <li><a href="../new_service/index.html">Services</a></li>
+               <li class="current-menu-item"><a href="index.html" aria-current="page">Sectors</a></li>
+              <li><a href="../our-clients/index.html">Our Clients</a></li>
+              <li><a href="../our-clients/index.html">Achievements</a></li>
+              <li ><a href="../portfolios/index.html">Portfolio</a></li>
+              <li><a href="../contact-us/index.html">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- ─── MOBILE HEADER ─── -->
+      <div class="header_mobile">
+        <div class="mlogo_wrapper">
+          <div class="mobile_logo">
+            <a href="../index.html"><img src="../contents/motocom-logo.jpg" alt="Moto Communications" /></a>
+          </div>
+          <div id="mmenu_toggle">
+            <button id="mobile-toggle" aria-label="Toggle menu">
+              <span></span>
+            </button>
+          </div>
+        </div>
+        <div class="mmenu_wrapper" id="mobile-menu">
+          <ul class="mobile_mainmenu">
+            <li><a href="../index.html">Home</a></li>
+            <li class="menu-item-has-children">
+              <a href="#">About</a>
+              <ul class="sub-menu">
+                <li><a href="../about-us/index.html">About Us</a></li>
+              </ul>
+            </li>
+            <li><a href="../new_service/index.html">Services</a></li>
+            <li><a href="../our-clients/index.html">Our Clients</a></li>
+            <li><a href="../our-clients/index.html">Achievements</a></li>
+            <li class="current-menu-item"><a href="index.html" aria-current="page">Portfolio</a></li>
+            <li><a href="../contact-us/index.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ─── CONTENT ─── -->
+      <div id="content" class="site-content">
+
+        <!-- Page Banner -->
+        <div class="page-header">
+          <div class="container">
+            <h1>Portfolio</h1>
+          </div>
+        </div>
+
+        <!-- Key Sectors -->
+        <section class="sector-section">
+          <h4 class="section-title">KEY SECTORS</h4>
+          <p class="section-subtitle">
+            Jadeed brings deep sector expertise to every engagement, with particular strength across:
+          </p>
+          <div class="sector-grid">
+
+            <div class="sector-card">
+              <div class="sector-header">Health &amp; Humanitarian</div>
+              <div class="sector-content">
+                <ul>
+                  <li>Public health campaigns</li>
+                  <li>Emergency &amp; crisis response communications</li>
+                  <li>Health policy and advocacy</li>
+                  <li>UN &amp; NGO programme communications</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sector-card">
+              <div class="sector-header">Finance &amp; Private Sector</div>
+              <div class="sector-content">
+                <ul>
+                  <li>Corporate reputation management</li>
+                  <li>Investor &amp; stakeholder relations</li>
+                  <li>Financial sector public affairs</li>
+                  <li>Brand positioning &amp; launches</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sector-card">
+              <div class="sector-header">Energy &amp; Environment</div>
+              <div class="sector-content">
+                <ul>
+                  <li>Clean energy transition campaigns</li>
+                  <li>Environmental policy communications</li>
+                  <li>Sustainability reporting &amp; messaging</li>
+                  <li>Community &amp; government engagement</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+      <!-- #content -->
+
+      <!-- ─── FOOTER ─── -->
+      <footer id="site-footer" class="site-footer">
+        <div class="main-footer">
+          <div class="container">
+            <div class="row">
+
+              <div class="widget-inner">
+                <img src="../contents/motocom-logo.jpg" alt="Moto Communications" />
+                <p>MotoCom is a leading digital communications agency specializing in social media strategy, content creation, and brand engagement. We help businesses connect with their audience through innovative and impactful online campaigns.</p>
+              </div>
+
+              <div>
+                <h4 class="widget-title">Our Services</h4>
+                <ul class="footer-nav-list">
+                  <li><a href="#">Branding &amp; Corporate Identity</a></li>
+                  <li><a href="#">Content Creation</a></li>
+                  <li><a href="#">Public Relations (PR) &amp; Media Engagement</a></li>
+                  <li><a href="#">Digital &amp; Social Media Management</a></li>
+                  <li><a href="#">Event Management &amp; Execution</a></li>
+                  <li><a href="#">Media Buying &amp; Monitoring</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 class="widget-title">Company</h4>
+                <ul class="footer-nav-list">
+                  <li><a href="../index.html">Home</a></li>
+                  <li><a href="../about-us/index.html">About Us</a></li>
+                  <li><a href="../new_service/index.html">Services</a></li>
+                  <li><a href="../contact-us/index.html">Contact Us</a></li>
+                </ul>
+              </div>
+
+              <div class="footer-address">
+                <h4 class="widget-title">Address</h4>
+                <p>Waiyaki Way, Nairobi, Kenya</p>
+                <p><strong>Phone:</strong> +254 722 351155</p>
+                <p><strong>Email:</strong> info@jadeedafrica.com</p>
+                <div class="footer-social">
+                  <a href="https://www.facebook.com/impactsomalia/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                  <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="container">
+            <div class="footer-copyright">© 2025 Moto Communications Limited</div>
+            <ul class="footer-bottom-links">
+              <li><a href="#">Terms and Conditions</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">FAQs</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <!-- #page -->
+
+    <a id="back-to-top" href="#" title="Back to top"><i class="fa fa-chevron-up"></i></a>
+
+    <script>
+      // Mobile menu toggle
+      document.getElementById('mobile-toggle').addEventListener('click', function () {
+        document.getElementById('mobile-menu').classList.toggle('open');
+      });
+
+      // Back to top
+      const btn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        btn.classList.toggle('show', window.scrollY > 300);
+      });
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    </script>
+  </body>
+</html>

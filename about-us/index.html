@@ -2500,6 +2500,12 @@
                         >
                           <a href="../our-clients/index.html">OUR CLIENTS</a>
                         </li>
+                         <li
+                          id="menu-item-2168"
+                          class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2168"
+                        >
+                          <a href="../our-clients/index.html">ACHIEVEMENTS</a>
+                        </li>
                         <li
                           id="menu-item-2469"
                           class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2469"
@@ -2644,6 +2650,11 @@
                   <a href="../our-clients/index.html">OUR CLIENTS</a>
                 </li>
                 <li
+                  class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2168"
+                >
+                  <a href="../our-clients/index.html">ACHIEVEMENTS</a>
+                </li>
+                <li
                   class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2469"
                 >
                   <a href="../portfolios/index.html">Portfolio</a>
@@ -2665,171 +2676,455 @@
       </header>
       <!-- #site-header -->
 
-      <div id="content" class="site-content">
-        <div class="" style="background-image: url(../page-banner/About.jpeg)">
-          <div class="container">
-            <div class="breadc-box no-line">
-              <div class="row">
-                <div class="col-md-12">
-                  <h1 class="text-center">About Us</h1>
-                </div>
-              </div>
-            </div>
-          </div>
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Jadeed Communications</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body{
+      background:#f4f7fb;
+      color:#111;
+      overflow-x:hidden;
+    }
+
+    /* HERO SECTION */
+
+    .about-section{
+      padding:90px 9%;
+      background:
+      linear-gradient(
+      135deg,
+      #ffffff,
+      #f4f7fb
+      );
+    }
+
+    .section-tag{
+      color:#0b4ea2;
+      letter-spacing:7px;
+      font-size:14px;
+      font-weight:700;
+      text-transform:uppercase;
+      margin-bottom:22px;
+    }
+
+    .main-heading{
+      font-size:52px;
+      color:#0b2f66;
+      margin-bottom:28px;
+      line-height:1.2;
+      font-weight:700;
+      max-width:850px;
+    }
+
+    .about-content{
+      max-width:1100px;
+      font-size:19px;
+      line-height:1.9;
+      color:#444;
+    }
+
+    .highlight{
+      color:#0b4ea2;
+      font-weight:600;
+    }
+
+    /* IMAGE SECTION */
+
+    .image-container{
+      margin-top:60px;
+      overflow:hidden;
+      border-radius:28px;
+      position:relative;
+      cursor:pointer;
+      transition:0.5s ease;
+      box-shadow:0 15px 40px rgba(0,0,0,0.12);
+    }
+
+    .image-container img{
+      width:100%;
+      display:block;
+      transition:0.6s ease;
+    }
+
+    .image-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+      rgba(11,78,162,0.78),
+      rgba(245,196,0,0.55)
+      );
+      opacity:0;
+      transition:0.5s ease;
+    }
+
+    .image-container:hover .image-overlay{
+      opacity:1;
+    }
+
+    .image-container:hover img{
+      transform:scale(1.05);
+    }
+
+    /* CORE VALUES */
+
+    .values-section{
+      padding:90px 9%;
+      background:#ffffff;
+    }
+
+    .values-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:25px;
+      margin-top:50px;
+    }
+
+    .value-card{
+      background:#fff;
+      border-radius:22px;
+      overflow:hidden;
+      border:2px solid #0b4ea2;
+      transition:0.45s ease;
+      cursor:pointer;
+      position:relative;
+    }
+
+    .value-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+      135deg,
+      #0b4ea2,
+      #f5c400
+      );
+      opacity:0;
+      transition:0.45s ease;
+    }
+
+    .value-card:hover::before{
+      opacity:1;
+    }
+
+    .value-card:hover{
+      transform:translateY(-12px);
+      box-shadow:0 18px 35px rgba(0,0,0,0.16);
+    }
+
+    .value-card-content{
+      position:relative;
+      z-index:2;
+      padding:35px 28px;
+      text-align:center;
+    }
+
+    .value-card h3{
+      color:#0b4ea2;
+      font-size:28px;
+      margin-bottom:18px;
+      transition:0.4s ease;
+    }
+
+    .value-card p{
+      color:#555;
+      font-size:17px;
+      line-height:1.7;
+      transition:0.4s ease;
+    }
+
+    .value-card:hover h3,
+    .value-card:hover p{
+      color:#fff;
+    }
+
+    /* REGIONAL PRESENCE */
+
+    .region-section{
+      padding:90px 9%;
+      background:#f4f7fb;
+    }
+
+    .region-content{
+      max-width:1000px;
+      margin-top:25px;
+      font-size:20px;
+      line-height:1.8;
+      color:#444;
+    }
+
+    .region-list{
+      margin-top:22px;
+      padding-left:28px;
+    }
+
+    .region-list li{
+      margin-bottom:10px;
+      font-size:20px;
+    }
+
+    /* STATS */
+
+    .stats-grid{
+      margin-top:60px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:25px;
+    }
+
+    .stat-box{
+      background:white;
+      border-radius:24px;
+      padding:40px 20px;
+      text-align:center;
+      border:2px solid #dce5f2;
+      transition:0.45s ease;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .stat-box::before{
+      content:"";
+      position:absolute;
+      width:100%;
+      height:100%;
+      top:100%;
+      left:0;
+      background:linear-gradient(
+      135deg,
+      #0b4ea2,
+      #f5c400
+      );
+      transition:0.5s ease;
+      z-index:0;
+    }
+
+    .stat-box:hover::before{
+      top:0;
+    }
+
+    .stat-box h2,
+    .stat-box p{
+      position:relative;
+      z-index:2;
+      transition:0.4s ease;
+    }
+
+    .stat-box h2{
+      color:#0b4ea2;
+      font-size:52px;
+      margin-bottom:10px;
+    }
+
+    .stat-box p{
+      color:#555;
+      font-size:18px;
+    }
+
+    .stat-box:hover h2,
+    .stat-box:hover p{
+      color:white;
+    }
+
+    .stat-box:hover{
+      transform:translateY(-10px);
+      box-shadow:0 18px 40px rgba(0,0,0,0.16);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .main-heading{
+        font-size:38px;
+      }
+
+      .about-content,
+      .region-content,
+      .region-list li{
+        font-size:17px;
+      }
+
+      .value-card h3{
+        font-size:24px;
+      }
+
+      .stat-box h2{
+        font-size:42px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ABOUT US -->
+
+  <section class="about-section">
+
+    <div class="section-tag">
+      ABOUT US
+    </div>
+
+    <h1 class="main-heading">
+      Strategic Communications That Create Real Impact
+    </h1>
+
+    <div class="about-content">
+
+      <p>
+        <span class="highlight">Jadeed Communications Limited</span> is a full-service strategic
+        communications consultancy established in 2014. With a footprint spanning
+        four dynamic regions, Jadeed brings together traditional media expertise
+        and cutting-edge digital strategy to help organisations communicate with
+        clarity, credibility, and sustained impact.
+      </p>
+
+      <br>
+
+      <p>
+        The firm serves a distinguished roster of clients — from global corporations
+        and United Nations agencies to governments and development institutions —
+        delivering tailored communications solutions that resonate across cultures,
+        languages, and contexts.
+      </p>
+
+    </div>
+
+    <!-- IMAGE -->
+
+    <div class="image-container">
+
+      <!-- Replace image path if needed -->
+      <img src="image.png" alt="Jadeed Communications">
+
+      <div class="image-overlay"></div>
+
+    </div>
+
+  </section>
+
+  <!-- CORE VALUES -->
+
+  <section class="values-section">
+
+    <div class="section-tag">
+      OUR CORE VALUES
+    </div>
+
+    <div class="values-grid">
+
+      <div class="value-card">
+        <div class="value-card-content">
+          <h3>Integrity</h3>
+          <p>
+            We communicate with honesty and transparency,
+            building trust with every client and audience.
+          </p>
         </div>
-
-        <section class="ezy__about13 light" id="ezy__about13">
-          <div class="container">
-            <div class="row justify-content-center align-items-center">
-              <div class="col-12 col-lg-6 mb-5 mb-lg-0">
-                <div class="">
-                  <h1 class="ezy__about13-heading">ABOUT US</h1>
-                  <p class="ezy__about13-sub-heading mb-2">
-                    Jadeed Communications Limited is a full-service strategic communications consultancy 
-established in 2014. With a footprint spanning four dynamic regions, Jadeed brings together 
-traditional media expertise and cutting-edge digital strategy to help organisations 
-communicate with clarity, credibility, and sustained impact. 
-                  </p>
-                  <p class="ezy__about13-sub-heading mb-0">
-                   The firm serves a distinguished roster of clients — from global corporations and United Nations 
-agencies to governments and development institutions — delivering tailored communications 
-solutions that resonate across cultures, languages, and contexts. 
-                  </p>
-                </div>
-              </div>
-              <div class="col-12 col-lg-6">
-                <div class="position-relative">
-                  <img
-                    src="https://cdn.easyfrontend.com/pictures/about/about13_1.jpg"
-                    alt=""
-                    class="img-fluid"
-                  />
-                  <img
-                    src="https://cdn.easyfrontend.com/pictures/about/about13_2.jpg"
-                    alt=""
-                    class="img-fluid ezy__about13-img2"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <style>
-          .ezy__about13 {
-            /* Bootstrap variables */
-            --bs-body-color: #1e2329;
-            --bs-body-bg: rgb(255, 255, 255);
-
-            /* Easy Frontend variables */
-            --ezy-theme-color: rgb(13, 110, 253);
-            --ezy-theme-color-rgb: 13, 110, 253;
-
-            background-color: var(--bs-body-bg);
-            color: var(--bs-body-color);
-            overflow: hidden;
-            padding: 60px 0;
-            position: relative;
-          }
-          @media (min-width: 768px) {
-            .ezy__about13 {
-              padding: 100px 0;
-            }
-          }
-
-          /* Gray Block Style */
-          .gray .ezy__about13,
-          .ezy__about13.gray {
-            /* Bootstrap variables */
-            --bs-body-bg: rgb(246, 246, 246);
-          }
-
-          /* Dark Gray Block Style */
-          .dark-gray .ezy__about13,
-          .ezy__about13.dark-gray {
-            /* Bootstrap variables */
-            --bs-body-color: #ffffff;
-            --bs-body-bg: rgb(30, 39, 53);
-          }
-
-          /* Dark Block Style */
-          .dark .ezy__about13,
-          .ezy__about13.dark {
-            /* Bootstrap variables */
-            --bs-body-color: #ffffff;
-            --bs-body-bg: rgb(11, 23, 39);
-          }
-
-          .ezy__about13-heading {
-            font-size: 35px;
-            line-height: 1.2;
-            text-transform: uppercase;
-          }
-          @media (min-width: 768px) {
-            .ezy__about13-heading {
-              font-size: 55px;
-            }
-          }
-
-          .ezy__about13-sub-heading {
-            font-size: 17px;
-            line-height: 1.5;
-            opacity: 0.75;
-          }
-
-          .ezy__about13-divider {
-            width: 100px;
-            height: 3px !important;
-            color: var(--bs-body-color);
-            opacity: 1;
-          }
-          .ezy__about13 img {
-            transform: rotate(45deg);
-            position: relative;
-            top: 60px;
-            width: 400px;
-            height: 400px;
-            object-fit: cover;
-          }
-          .ezy__about13-img2 {
-            top: -400px;
-            left: 300px !important;
-            position: absolute !important;
-            display: none;
-          }
-          @media (min-width: 768px) {
-            .ezy__about13-img2 {
-              display: block;
-            }
-          }
-
-          @media (min-width: 991px) {
-            .ezy__about13 img {
-              transform: rotate(45deg);
-              position: relative;
-              left: 100px;
-              width: 300px;
-              height: 300px;
-              object-fit: cover;
-            }
-            .ezy__about13-img2 {
-              top: 0px !important;
-              left: 100px !important;
-              position: relative !important;
-            }
-          }
-
-          .ezy__about13-bg-holder {
-            width: 36vw;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #45ba47;
-            float: left;
-          }
-        </style>
       </div>
+
+      <div class="value-card">
+        <div class="value-card-content">
+          <h3>Impact</h3>
+          <p>
+            We measure success through meaningful outcomes,
+            not just communication reach.
+          </p>
+        </div>
+      </div>
+
+      <div class="value-card">
+        <div class="value-card-content">
+          <h3>Innovation</h3>
+          <p>
+            We combine traditional media excellence with
+            emerging digital communication strategies.
+          </p>
+        </div>
+      </div>
+
+      <div class="value-card">
+        <div class="value-card-content">
+          <h3>Inclusion</h3>
+          <p>
+            We create culturally sensitive and inclusive
+            communication experiences for diverse audiences.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- REGIONAL PRESENCE -->
+
+  <section class="region-section">
+
+    <div class="section-tag">
+      REGIONAL PRESENCE
+    </div>
+
+    <div class="region-content">
+
+      Jadeed Communications operates across four key regions,
+      enabling the firm to deliver locally grounded and globally
+      connected communication strategies.
+
+      <ul class="region-list">
+        <li>Middle East</li>
+        <li>North Africa</li>
+        <li>East Africa</li>
+        <li>Southern Africa</li>
+      </ul>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="stats-grid">
+
+      <div class="stat-box">
+        <h2>2014</h2>
+        <p>Year Established</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>4</h2>
+        <p>Regional Offices</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>10+</h2>
+        <p>Years of Expertise</p>
+      </div>
+
+      <div class="stat-box">
+        <h2>4</h2>
+        <p>Client Sectors</p>
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+</html>
       <!-- #content -->
 
       <footer id="site-footer" class="site-footer bg-second">
