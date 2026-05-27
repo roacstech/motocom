@@ -30,6 +30,9 @@
         color: #fff;
         padding: 10px 0;
         font-size: 13px;
+        position: sticky;
+        top: 0;
+        z-index: 500;
       }
       #header_topbar .container { max-width: 1200px; margin: auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
       .info-list { list-style: none; display: flex; gap: 20px; }
@@ -43,19 +46,28 @@
       .main-header {
         background: #fff;
         box-shadow: 0 2px 10px rgba(0,0,0,.08);
-        position: sticky;
-        top: 0;
-        z-index: 100;
+        position: fixed;
+        top: 0; /* height of topbar (10px padding-top + 10px padding-bottom + ~21px line-height) */
+        z-index: 20000;
+        width: 100%;
       }
-      .main-header .container { max-width: 1200px; margin: auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 80px; }
-      #site-logo img { height: 60px; width: auto; }
+      .main-header .container {
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 110px; /* increased from 80px */
+      }
+      #site-logo img { height: 80px; width: auto; } /* increased from 60px */
 
       /* ─── NAV ─── */
       .main-navigation ul { list-style: none; display: flex; gap: 4px; align-items: center; }
       .main-navigation ul li { position: relative; }
       .main-navigation ul li a {
         display: block;
-        padding: 8px 14px;
+        padding: 10px 16px; /* slightly more padding */
         font-family: 'Montserrat', sans-serif;
         font-size: 13px;
         font-weight: 600;
@@ -87,9 +99,9 @@
       .main-navigation ul li ul li a:hover { background: var(--blue); color: #fff; }
 
       /* ─── MOBILE HEADER ─── */
-      .header_mobile { display: none; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
-      .mlogo_wrapper { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; }
-      .mobile_logo img { height: 50px; width: auto; }
+      .header_mobile { display: none; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,.08); position: sticky; top: 0; z-index: 190; }
+      .mlogo_wrapper { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; }
+      .mobile_logo img { height: 54px; width: auto; }
       #mmenu_toggle button {
         background: none; border: none; cursor: pointer;
         width: 30px; height: 22px; position: relative;
@@ -318,20 +330,19 @@
           </div>
           <nav id="site-navigation" class="main-navigation">
             <ul>
-              <li><a href="../index.html">Home</a></li>
+              <li><a href="../index.html">HOME</a></li>
               <li class="menu-item-has-children">
-                <a href="#">About</a>
+                <a href="#">ABOUT</a>
                 <ul class="sub-menu">
-                  <li><a href="../about-us/index.html">About Us</a></li>
+                  <li><a href="../about-us/index.html">ABOUT US</a></li>
                 </ul>
               </li>
-
-              <li><a href="../new_service/index.html">Services</a></li>
-               <li class="current-menu-item"><a href="index.html" aria-current="page">Sectors</a></li>
-              <li><a href="../our-clients/index.html">Our Clients</a></li>
-              <li><a href="../our-clients/index.html">Achievements</a></li>
-              <li ><a href="../portfolios/index.html">Portfolio</a></li>
-              <li><a href="../contact-us/index.html">Contact</a></li>
+              <li><a href="../new_service/index.html">SERVICES</a></li>
+              <li class="current-menu-item"><a href="index.html" aria-current="page">SECTORS</a></li>
+              <li><a href="../our-clients/index.html">OUR CLIENTS</a></li>
+              <li><a href="../our-clients/index.html">ACHIEVEMENTS</a></li>
+              <li><a href="../portfolios/index.html">PORTFOLIO</a></li>
+              <li><a href="../contact-us/index.html">CONTACT</a></li>
             </ul>
           </nav>
         </div>
@@ -353,7 +364,7 @@
           <ul class="mobile_mainmenu">
             <li><a href="../index.html">Home</a></li>
             <li class="menu-item-has-children">
-              <a href="#">About</a>
+              <a href="#">ABOUT</a>
               <ul class="sub-menu">
                 <li><a href="../about-us/index.html">About Us</a></li>
               </ul>
